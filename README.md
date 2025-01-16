@@ -1,5 +1,5 @@
 # apko-basefiles
-APKO standard images
+APKO standard images, this is based off the work by [Chainguard](https://www.chainguard.dev/) for my personal understanding.
 
 # Requirements
 
