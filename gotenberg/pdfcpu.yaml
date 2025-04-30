@@ -13,7 +13,7 @@ package:
   name: pdfver
   version: 0.8.1
   epoch: 0
-  description: "A project that will greet the world infinitely"
+  description: " A PDF processor written in Go."
 
 environment:
   contents:
