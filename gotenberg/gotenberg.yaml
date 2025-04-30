@@ -1,0 +1,30 @@
+package:
+  name: gotenberg
+  version: 8.20.1
+  epoch: 0
+  description: "A project that will greet the world infinitely"
+  dependencies:
+    runtime:
+      - support-only@local
+
+environment:
+  contents:
+    keyring:
+      - https://packages.wolfi.dev/os/wolfi-signing.rsa.pub
+      - ./melange.rsa.pub
+    repositories:
+      - https://packages.wolfi.dev/os
+      - '@local /work/packages'
+
+pipeline:
+  - uses: git-checkout
+    with:
+      repository: https://github.com/gotenberg/gotenberg.git
+      expected-commit: 9701f88ae398dbf8d24036f6576f6098e7473151
+      tag: v${{package.version}}
+
+  - uses: go/build
+    with:
+      tags: enterprise
+      packages: ./cmd/gotenberg/main.go
+      output: gotenberg

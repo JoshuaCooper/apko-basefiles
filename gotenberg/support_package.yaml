@@ -1,0 +1,16 @@
+package:
+  name: support-only
+  version: 1.0.0
+  epoch: 0
+  description: "Support-only package with no compiled output"
+  dependencies:
+    runtime:
+      - ca-certificates
+      - busybox
+      - curl
+      - chromium
+      - msttcorefonts-installer
+      - libreoffice-25.2
+      - python-3.12-base
+
+
