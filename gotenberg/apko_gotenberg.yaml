@@ -1,10 +1,10 @@
 contents:
   keyring:
     - https://packages.wolfi.dev/os/wolfi-signing.rsa.pub
-    - ./melange.rsa.pub
+    - "http://apk-server:8000/melange.rsa.pub"
   repositories:
     - https://packages.wolfi.dev/os
-    - '@local /work/packages'
+    - "http://apk-server:8000"
   packages:
     - gotenberg@local
     - busybox
