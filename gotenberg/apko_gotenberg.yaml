@@ -6,7 +6,6 @@ contents:
     - https://packages.wolfi.dev/os
     - '@local /work/packages'
   packages:
-    - pdfcpu@local
     - gotenberg@local
     - busybox
     - bash
@@ -21,6 +20,9 @@ accounts:
     - username: nonroot
       uid: 65532
   run-as: 65532
+
+entrypoint:
+  command: /usr/bin/tini
 
 archs:
  - amd64
