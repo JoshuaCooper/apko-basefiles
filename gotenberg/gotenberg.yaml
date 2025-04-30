@@ -2,7 +2,7 @@ package:
   name: gotenberg
   version: 8.20.1
   epoch: 0
-  description: "A project that will greet the world infinitely"
+  description: "A containerized API for seamless PDF conversion"
   dependencies:
     runtime:
       - support-only@local
