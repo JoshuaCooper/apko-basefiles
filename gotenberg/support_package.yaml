@@ -12,5 +12,6 @@ package:
       - msttcorefonts-installer
       - libreoffice-25.2
       - python-3.12-base
+      - pdfcpu
 
 
