@@ -12,3 +12,12 @@ docker-compose up
 apko build example.yaml localhostversion:latest localhostversion.tar --sbom=false
 </pre>
 
+Set your contents up like this for using local nginx cache server:
+
+<pre>
+contents:
+  keyring:
+    - http://localhost:8080/wolfi-signing.rsa.pub
+  repositories:
+    - http://localhost:8080/
+</pre>
