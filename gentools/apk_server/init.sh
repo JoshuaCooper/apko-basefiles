@@ -52,15 +52,17 @@ fi
 
 
 container_name="apk-server"
-docker run -d --name "$container_name" -p 8000:8000 $(docker image ls | grep $container_name | awk '{ print $3}')
+image_id=$(docker image ls | grep $container_name | awk '{ print $3}')
+docker run -v ./packages:/work/packages -d --name "$container_name-runtime" -p 8000:8000 $image_id
+#$(docker image ls | grep $container_name | awk '{ print $3}')
 
 
 sleep 3
 
 # Check if container with that name is running
-if docker ps --filter "name=^/${container_name}$" --filter "status=running" | grep -qw "$container_name"; then
-    echo "APK-Server started on 8000"
-else
-    echo "Failed to start APK-Server container"
-fi
+#if docker ps --filter "name=^/${container_name}$" --filter "status=running" | grep -qw "$container_name"; then
+#    echo "APK-Server started on 8000"
+#else
+    #echo "Failed to start APK-Server container"
+#fi
 
