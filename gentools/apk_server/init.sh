@@ -37,32 +37,19 @@ else
     echo "Directory 'packages' created"
 fi
 
-# If both are installed
-apko build apk_server.yaml apk-server:latest ./output/apk-server.tar --sbom=false
-
-
-# Check for apk-server.tar and load it with Docker if it exists
-if [ -f "output/apk-server.tar" ]; then
-    echo "Found output/apk-server.tar, loading into Docker..."
-    docker load < output/apk-server.tar
-else
-    echo "apk-server.tar not found in output/"
-fi
-
-
-
-container_name="apk-server"
-image_id=$(docker image ls | grep $container_name | awk '{ print $3}')
-docker run -v ./packages:/work/packages -d --name "$container_name-runtime" -p 8000:8000 $image_id
-#$(docker image ls | grep $container_name | awk '{ print $3}')
-
-
-sleep 3
-
 # Check if container with that name is running
-#if docker ps --filter "name=^/${container_name}$" --filter "status=running" | grep -qw "$container_name"; then
-#    echo "APK-Server started on 8000"
-#else
-    #echo "Failed to start APK-Server container"
-#fi
-
+if docker ps --filter "name=^/${container_name}$" --filter "status=running"
+then
+    echo "APK-Server is already running on 8000"
+    echo "-- Stop container and delete image if you want it rebuilt"
+    echo "-- exiting"
+    exit
+else
+    echo "Failed to start APK-Server container"
+    docker build -t apk-server .
+    container_name="apk-server"
+    image_id=$(docker image ls | grep $container_name | awk '{ print $3}')
+    docker run -v ./packages:/work/packages -d --name "$container_name-runtime" -p 8000:8000 $image_id
+    # Check if the image has been built and is added.
+    # TODO - Check if image isn't built / imported. != - build 
+fi
