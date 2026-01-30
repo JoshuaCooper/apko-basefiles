@@ -29,10 +29,3 @@ if [[ -f ./tmp/$pack_info.tar ]]; then
 else
     echo "./tmp/$pack_info.tar does not exist."
 fi
-
-#docker image ls | grep $packer_image | awk '{ print }'
-
-# Obtain package information - should be a function 
-#dotnet8version=$(docker run -it packinfo:latest-dev-amd64 /bin/bash -c "apk update && apk add dotnet-8 dotnet-8-runtime aspnet-8-runtime && dotnet --list-runtimes" | grep netcore -i | awk '{ print $2}')
-# Clean Docker Container
-
